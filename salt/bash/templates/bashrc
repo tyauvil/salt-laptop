@@ -1,0 +1,29 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Environment
+export EDITOR=/usr/bin/nvim
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+# User specific aliases and functions
+alias docker="sudo $(which docker)"
+alias docker-compose="sudo $(which docker-compose)"
+alias vi=nvim
+alias vim=nvim
+alias salt-sync="sudo rsync -r ~/workspace/personal/salt-laptop/salt/ /srv/salt/"
+
+for file in ~/.local/environment/*; do source $file; done
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+# Powerline
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bash/powerline.sh
+fi
