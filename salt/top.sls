@@ -1,0 +1,5 @@
+base:
+  '*':
+    - bash
+    - docker
+    - vagrant
